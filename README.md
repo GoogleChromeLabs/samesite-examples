@@ -14,7 +14,7 @@
  limitations under the License.
 -->
 
-# `SameSite` examples
+# 🍪 `SameSite` examples
 
 This is a companion repo for the
 ["`SameSite` cookies explained"](https://web.dev/samesite-cookies-explained)
@@ -25,8 +25,8 @@ functionality of the `SameSite` attribute, and the changes in Chrome to apply a
 
 This functionality is available now in
 [Chrome 76](https://www.chromestatus.com/features/schedule) behind the
-associated flags to let you test the effect on your site. The Chrome Status
-entries provide the proposed releases for this behaviour to become the default.
+associated flags to let you test the effect on your site. This is intended to
+become default behaviour as of Chrome 80.
 
 ## `SameSite=Lax` by default
 
@@ -34,13 +34,36 @@ entries provide the proposed releases for this behaviour to become the default.
 - Chrome Status entry:
   [Cookies with `SameSite` by default](https://www.chromestatus.com/feature/5088147346030592)
 
+Turn this flag on to have Chrome apply the equivalent of `SameSite=Lax` to
+cookies without a `SameSite` attribute specified.
+
 ## Require `Secure` with `SameSite=None`
 
 - Flag: `chrome://flags/#cookies-without-same-site-must-be-secure`
 - Chrome Status entry:
   [Reject insecure `SameSite=None` cookies](https://chromestatus.com/feature/5633521622188032)
 
-# Examples
+Turn on this flag along with the previous flag to have Chrome enforce the need
+for any `SameSite=None` cookie to also specify the `Secure` attribute.
+
+## See affected cookies
+
+- Flag `chrome://flags/#cookie-deprecation-messages`
+
+This will add console warning messages for _every single cookie_ potentially
+affected by this change.
+
+**⚠️ WARNING** You will see a lot of messages! Seriously, a lot of messages.
+
+Since the vast majority of cookies do not have any `SameSite` attribute set that
+means they are all sent in a cross-site context, regardless of whether or not
+the intent is to use them.
+
+As you add the correct `SameSite` and `Secure` values to your cookies, you will
+be able to use the console warnings to test for any you have missed. Try this
+without the previous flags enabled.
+
+# 📋 Examples
 
 In this repo you'll find examples on making use of `SameSite=None; Secure` in a
 variety of languages, libraries, and frameworks. The `SameSite` attribute is
@@ -55,7 +78,19 @@ request to include it.
 - [PHP](php.md)
 - [Python](python.md)
 
-## Contributing
+# 🙋 Questions
+
+You can
+[raise an issue in this repo](https://github.com/GoogleChromeLabs/samesite-examples/issues)
+if there is specific behaviour you would like to see documented or something
+that's not clear in the current examples.
+
+You can also use the
+[`samesite` tag on StackOverflow](https://stackoverflow.com/questions/tagged/samesite)
+which we will monitor on a regular basis. As the discussion evolves there, we'll
+also add a Frequently Asked Questions section to this repo for easy reference.
+
+## 💻 Contributing
 
 Issues and pull requests are always welcome. For details, see
 [CONTRIBUTING](CONTRIBUTING.md)
