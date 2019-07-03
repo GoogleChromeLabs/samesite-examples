@@ -53,7 +53,7 @@ for any `SameSite=None` cookie to also specify the `Secure` attribute.
 This will add console warning messages for _every single cookie_ potentially
 affected by this change.
 
-**⚠️ WARNING** You will see a lot of messages! Seriously, a lot of messages.
+**⚠️ WARNING:** You will see a lot of messages! Seriously, a lot of messages.
 
 Since the vast majority of cookies do not have any `SameSite` attribute set that
 means they are all sent in a cross-site context, regardless of whether or not
@@ -69,6 +69,11 @@ In this repo you'll find examples on making use of `SameSite=None; Secure` in a
 variety of languages, libraries, and frameworks. The `SameSite` attribute is
 widely supported, but the addition of the explicit `None` value may require
 updates or work-arounds.
+
+**🚧 NOTE:** To test the `None` value is set you need to test in a browser that
+parses this addition, e.g. Chrome 76 or above. The changes _should_ be backwards
+compatible, but those browsers should ignore the `None` value so you will not
+see it in any cookie view. 
 
 If your specific platform isn't covered here, please raise an issue or a pull
 request to include it.
