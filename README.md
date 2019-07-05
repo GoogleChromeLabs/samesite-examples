@@ -73,7 +73,7 @@ updates or work-arounds.
 **🚧 NOTE:** To test the `None` value is set you need to test in a browser that
 parses this addition, e.g. Chrome 76 or above. The changes _should_ be backwards
 compatible, but those browsers should ignore the `None` value so you will not
-see it in any cookie view. 
+see it in any cookie view.
 
 If your specific platform isn't covered here, please raise an issue or a pull
 request to include it.
@@ -82,6 +82,7 @@ request to include it.
 - [JavaScript - Node.js](javascript-nodejs.md)
 - [PHP](php.md)
 - [Python](python.md)
+- [Python - Flask](python-flask.md)
 
 # 🙋 Questions
 
