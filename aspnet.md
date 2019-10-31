@@ -8,7 +8,13 @@ Affected libraries like OpenIdConnect and WsFederation will automatically set Sa
 
 ## ASP.NET 4.7.2+
 After installing the patch announced above, SameSite=None can be sent on a cookie using the following:
-`Response.Cookies.Add(new HttpCookie("Key", "Value") { SameSite.SameSite = SameSiteMode.None });`
+```
+Response.Cookies.Add(new HttpCookie("key", "value")
+{
+    SameSite = SameSiteMode.None,
+    Secure = true,
+});
+```
 
 
 ## ASP.NET Core 2.1+
@@ -16,7 +22,8 @@ After installing the patches announced above, SameSite=None can be sent on a coo
 ```
 Response.Cookies.Append("Key", "Value", new CookieOptions()
 {
-     SameSite = SameSiteMode.None
+     SameSite = SameSiteMode.None,
+     Secure = true,
 });
 ```
 
