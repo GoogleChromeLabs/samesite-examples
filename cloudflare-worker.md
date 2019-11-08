@@ -25,13 +25,19 @@ will:
 - Add `Secure` to any cookie with `SameSite=None`
 - Add `SameSite=Lax` by default
 
-Next step is to add a configuration map to specify the `SameSite` attribute for
-given cookies.
+The `COOKIEMAP` can be used to apply a given `SameSite` value to the stated cookie.
+
 
 ```javascript
 /*
  * Try https://samesite-proxy.rowan.workers.dev/proxied
  */
+
+const COOKIEMAP = {
+  ck06: 'strict',
+  ck07: 'lax',
+  ck08: 'none'
+}
 
 async function handleRequest(request) {
   const url = new URL(request.url);
@@ -40,7 +46,7 @@ async function handleRequest(request) {
 
   const alteredHeaders = new Headers(response.headers);
   // todo fix regex to deal with commas in the Set-Cookie string
-  const cookies = alteredHeaders.get('set-cookie').match(/[^,].+?(?=,|$)/g);
+  const cookies  = alteredHeaders.get('set-cookie').match(/[^,].+?(?=,|$)/g);
   alteredHeaders.delete('set-cookie');
 
   for (const cookie of cookies) {
@@ -79,6 +85,11 @@ async function handleRequest(request) {
       }
     });
 
+    if (COOKIEMAP[cookieName] && !hasSameSite) {
+      directives.push('SameSite=' + COOKIEMAP[cookieName]);
+      hasSameSite = COOKIEMAP[cookieName];
+    }
+
     // SameSite=None must include Secure
     if (hasSameSite === 'none' && !isSecure) {
       directives.push('Secure');
@@ -88,20 +99,20 @@ async function handleRequest(request) {
     if (!hasSameSite) {
       directives.push('SameSite=Lax');
     }
-
+    
     alteredHeaders.append('set-cookie', directives.join('; '));
   }
 
   const alteredResponse = new Response(response.body, {
     status: response.status,
     statusText: response.statusText,
-    headers: alteredHeaders,
+    headers: alteredHeaders
   });
 
   return alteredResponse;
 }
 
 addEventListener('fetch', event => {
-  event.respondWith(handleRequest(event.request));
+  event.respondWith(handleRequest(event.request))
 });
 ```
