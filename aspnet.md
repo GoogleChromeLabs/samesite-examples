@@ -1,6 +1,6 @@
 # ASP.NET and ASP.NET Core
 
-See the annoucements here: <br>
+See the announcements here: <br>
 https://devblogs.microsoft.com/aspnet/upcoming-samesite-cookie-changes-in-asp-net-and-asp-net-core/ <br>
 https://github.com/aspnet/Announcements/issues/390 <br>
 
