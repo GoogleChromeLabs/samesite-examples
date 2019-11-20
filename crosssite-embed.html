@@ -6,8 +6,9 @@
 <p>Testing cross-site cookies</p>
 <script>
   var req = new XMLHttpRequest();
+  req.withCredentials = true;
   req.responseType = 'json';
-  req.open('GET', url, true);
+  req.open('GET', "https://samesite-sandbox.glitch.me/cookies.json", true);
   req.onload  = function() {
      var jsonResponse = req.response;
      window.parent.postMessage(data, "https://samesite-sandbox.glitch.me");
