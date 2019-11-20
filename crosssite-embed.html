@@ -11,7 +11,7 @@
   req.open('GET', "https://samesite-sandbox.glitch.me/cookies.json", true);
   req.onload  = function() {
      var jsonResponse = req.response;
-     window.parent.postMessage(data, "https://samesite-sandbox.glitch.me");
+     window.parent.postMessage(jsonResponse, "https://samesite-sandbox.glitch.me");
   };
   req.send(null);
 </script>
