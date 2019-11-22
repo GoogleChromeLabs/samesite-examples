@@ -5,13 +5,18 @@
 <title>Cross-site 🍪 sandbox</title>
 <p>Testing cross-site cookies</p>
 <script>
-  var req = new XMLHttpRequest();
-  req.withCredentials = true;
-  req.responseType = 'json';
-  req.open('GET', "https://samesite-sandbox.glitch.me/cookies.json", true);
-  req.onload  = function() {
-     var jsonResponse = req.response;
-     window.parent.postMessage(jsonResponse, "https://samesite-sandbox.glitch.me");
-  };
-  req.send(null);
+  function fetchCookies(requestMethod) {
+    var req = new XMLHttpRequest();
+    req.withCredentials = true;
+    req.responseType = 'json';
+    req.open(requestMethod, "https://samesite-sandbox.glitch.me/cookies.json", true);
+    req.onload  = function() {
+       var jsonResponse = { type: requestMethod, cookies: req.response };
+       window.parent.postMessage(jsonResponse, "https://samesite-sandbox.glitch.me");
+    };
+    req.send(null);
+  }
+  
+  fetchCookies('GET');
+  fetchCookies('POST');
 </script>
