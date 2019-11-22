@@ -11,7 +11,7 @@
     req.responseType = 'json';
     req.open(requestMethod, "https://samesite-sandbox.glitch.me/cookies.json", true);
     req.onload  = function() {
-       var jsonResponse = { type: requestMethod, cookies: req.response };
+       var jsonResponse = { method: requestMethod, cookies: req.response };
        window.parent.postMessage(jsonResponse, "https://samesite-sandbox.glitch.me");
     };
     req.send(null);
