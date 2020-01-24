@@ -26,6 +26,8 @@ setcookie('same-site-cookie', 'foo', ['samesite' => 'Lax']);
 setcookie('cross-site-cookie', 'bar', ['samesite' => 'None', 'secure' => true]);
 ```
 
+There are third-party packages, such as [delight-im/PHP-Cookie](https://github.com/delight-im/PHP-Cookie), which supports the `SameSite` attribute and the `None` value (since v3.2) on PHP 5.4.0+.
+
 For earlier versions of PHP, you can also set the
 [`header()`](https://www.php.net/manual/en/function.header.php) directly:
 
