@@ -27,3 +27,13 @@ Response.Cookies.Append("Key", "Value", new CookieOptions()
 });
 ```
 
+## < ASP.NET 4.7.2
+Cookie needs to be overwritten with the appropriate attributes set in the Global.asax:
+```
+void PreSendRequestHeaders(object sender, EventArgs e)
+{
+    HttpApplication app = sender as HttpApplication;
+    if (app != null && app.Context.SkipAuthorization && app.Request.Cookies["ASP.NET_SessionId"] != null)
+        app.Response.AddHeader("Set-Cookie", "ASP.NET_SessionId=" + app.Request.Cookies["ASP.NET_SessionId"].Value + ";HttpOnly;SameSite=None;Secure");
+}
+```
