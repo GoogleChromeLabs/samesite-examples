@@ -79,6 +79,7 @@ If your specific platform isn't covered here, please raise an issue or a pull
 request to include it.
 
 - [ASP.NET](aspnet.md)
+- [Elixir - Phoenix](elixir-phoenix.md)
 - [JavaScript](javascript.md)
 - [JavaScript - Node.js](javascript-nodejs.md)
 - [PHP](php.md)

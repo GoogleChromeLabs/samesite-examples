@@ -36,7 +36,7 @@ explicitly through `:extra` key to pass any string that is appended to the cooki
 ```elixir
 plug Plug.Session,
   store: :cookie,
-  extra: "SameSite=Lax",
+  extra: "SameSite=None",
   secure: true,
   #...
 ```
