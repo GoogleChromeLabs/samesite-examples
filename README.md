@@ -85,6 +85,7 @@ request to include it.
 - [PHP](php.md)
 - [Python](python.md)
 - [Python - Flask](python-flask.md)
+- [Shopify](https://help.shopify.com/en/api/guides/samesite-cookies)🌐↗️
 
 # 🙋 Questions
 
