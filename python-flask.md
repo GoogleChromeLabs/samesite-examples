@@ -30,7 +30,7 @@ app = Flask(__name__)
 def hello_world():
     resp = make_response('Hello, World!');
     resp.set_cookie('same-site-cookie', 'foo', samesite='Lax');
-    resp.set_cookie('cross-site-cookie', 'bar', samesite='Lax', secure=True);
+    resp.set_cookie('cross-site-cookie', 'bar', samesite='None', secure=True);
     return resp
 ```
 
