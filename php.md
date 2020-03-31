@@ -30,6 +30,6 @@ For earlier versions of PHP, you can also set the
 [`header()`](https://www.php.net/manual/en/function.header.php) directly:
 
 ```php
-header('Set-Cookie: same-site-cookie=foo; SameSite=Lax');
-header('Set-Cookie: cross-site-cookie=bar; SameSite=None; Secure');
+header('Set-Cookie: same-site-cookie=foo; SameSite=Lax', false);
+header('Set-Cookie: cross-site-cookie=bar; SameSite=None; Secure', false);
 ```
