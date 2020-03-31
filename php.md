@@ -33,3 +33,27 @@ For earlier versions of PHP, you can also set the
 header('Set-Cookie: same-site-cookie=foo; SameSite=Lax', false);
 header('Set-Cookie: cross-site-cookie=bar; SameSite=None; Secure', false);
 ```
+
+For Session Cookie , you can set into [`session_set_cookie_params`](https://www.php.net/manual/en/function.session-set-cookie-params.php)  method.
+PHP 7.3.0 introduced new attributes for samesite.
+
+```php
+if (PHP_VERSION_ID < 70300) { 
+session_set_cookie_params([
+    'lifetime' => $cookie_timeout,
+    'path' => '/',
+    'domain' => $cookie_domain,
+    'secure' => $session_secure,
+    'httponly' => $cookie_httponly,
+    'samesite' => 'Lax'
+]);
+} else { 
+session_set_cookie_params([
+    'lifetime' => $cookie_timeout,
+    'path' => '/; samesite=Lax',
+    'domain' => $cookie_domain,
+    'secure' => $session_secure,
+    'httponly' => $cookie_httponly
+]);
+}
+```
