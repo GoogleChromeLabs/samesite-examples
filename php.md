@@ -38,7 +38,7 @@ For Session Cookie , you can set into [`session_set_cookie_params`](https://www.
 PHP 7.3.0 introduced new attributes for samesite.
 
 ```php
-if (PHP_VERSION_ID < 70300) { 
+if (PHP_VERSION_ID >= 70300) { 
 session_set_cookie_params([
     'lifetime' => $cookie_timeout,
     'path' => '/',
@@ -48,12 +48,12 @@ session_set_cookie_params([
     'samesite' => 'Lax'
 ]);
 } else { 
-session_set_cookie_params([
-    'lifetime' => $cookie_timeout,
-    'path' => '/; samesite=Lax',
-    'domain' => $cookie_domain,
-    'secure' => $session_secure,
-    'httponly' => $cookie_httponly
-]);
+session_set_cookie_params(
+    $cookie_timeout,
+    '/; samesite=Lax',
+    $cookie_domain,
+    $session_secure,
+    $cookie_httponly
+);
 }
 ```
