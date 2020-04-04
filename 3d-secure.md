@@ -78,3 +78,13 @@ with the `SameSite=None; Secure` attributes. You should not make your default
 session cookies available to third-parties, so instead consider creating a
 short-lived cookie that stores a token that allows you to link the incoming
 `POST` request to the associated user or transaction on your back-end.
+
+This scenario can be implement as follows:
+
+- Create a short-lived cookie with the `SameSite=None; Secure` attributes for
+  retrieve session id after payment
+- Check The HTTP referer on the incoming `POST` request to make sure the 
+  request is come from trusted source 
+- Use the short-lived cookie for set-up session id and retrieve the current
+  session information
+- The short-lived cookie is no longer needed, so destroy it
