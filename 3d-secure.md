@@ -1,17 +1,16 @@
 <!--
  Copyright 2020 Google Inc.
 
- Licensed under the Apache License, Version 2.0 (the "License");
- you may not use this file except in compliance with the License.
- You may obtain a copy of the License at
+ Licensed under the Apache License, Version 2.0 (the "License"); you may not use
+ this file except in compliance with the License. You may obtain a copy of the
+ License at
 
      http://www.apache.org/licenses/LICENSE-2.0
 
- Unless required by applicable law or agreed to in writing, software
- distributed under the License is distributed on an "AS IS" BASIS,
- WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- See the License for the specific language governing permissions and
- limitations under the License.
+ Unless required by applicable law or agreed to in writing, software distributed
+ under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+ CONDITIONS OF ANY KIND, either express or implied. See the License for the
+ specific language governing permissions and limitations under the License.
 -->
 
 # Fixing issues with `SameSite` cookies and 3-D Secure checkout flows
@@ -38,7 +37,8 @@ This means that final `POST` request may appear to your server as a new session,
 meaning your site may attempt to set new cookies for the user or treat them as
 if they were not logged in.
 
-![Sequence diagram showing cookies being excluded on the final POST request](https://cdn.glitch.com/e304e580-9956-4cb6-9f62-9e89ad6cd85f%2Fsamesite-3d-secure-fail.png?v=1585762915129)
+![Sequence diagram showing cookies being excluded on the final POST
+request](https://cdn.glitch.com/e304e580-9956-4cb6-9f62-9e89ad6cd85f%2Fsamesite-3d-secure-fail.png?v=1585762915129)
 
 There are a number of options to fix this based on your site's archicture.
 
