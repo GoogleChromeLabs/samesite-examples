@@ -22,8 +22,10 @@ named [`cookie` package](https://www.npmjs.com/package/cookie). As of version
 the `None` value.
 
 ```js
-response.cookie('same-site-cookie', 'foo', { sameSite: 'lax' });
-response.cookie('cross-site-cookie', 'bar', { sameSite: 'none', secure: true });
+// Set a same-site cookie for first-party contexts
+response.cookie('cookie1', 'value1', { sameSite: 'lax' });
+// Set a cross-site cookie for third-party contexts
+response.cookie('cookie2', 'value2', { sameSite: 'none', secure: true });
 ```
 
 If you are depending on an earlier version, you will need to send the
@@ -34,7 +36,7 @@ process so you will need to set all your cookies here.
 
 ```js
 response.setHeader('set-cookie', [
-  'same-site-cookie=bar; SameSite=Lax',
-  'cross-site-cookie=foo; SameSite=None; Secure',
+  'cookie1=value1; SameSite=Lax',
+  'cookie2=value2; SameSite=None; Secure',
 ]);
 ```

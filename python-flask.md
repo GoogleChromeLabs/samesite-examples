@@ -29,8 +29,10 @@ app = Flask(__name__)
 @app.route('/')
 def hello_world():
     resp = make_response('Hello, World!');
-    resp.set_cookie('same-site-cookie', 'foo', samesite='Lax');
-    resp.set_cookie('cross-site-cookie', 'bar', samesite='None', secure=True);
+    # Set a same-site cookie for first-party contexts
+    resp.set_cookie('cookie1', 'value1', samesite='Lax');
+    # Set a cross-site cookie for third-party contexts
+    resp.set_cookie('cookie2', 'value2', samesite='None', secure=True);
     return resp
 ```
 
@@ -46,8 +48,10 @@ app = Flask(__name__)
 @app.route('/')
 def hello_world():
     resp = make_response('Hello, World!');
-    resp.set_cookie('same-site-cookie', 'foo', samesite='Lax');
+    # Set a same-site cookie for first-party contexts
+    resp.set_cookie('cookie1', 'value1', samesite='Lax');
     # Ensure you use "add" to not overwrite existing cookie headers
-    resp.headers.add('Set-Cookie','cross-site-cookie=bar; SameSite=None; Secure')
+    # Set a cross-site cookie for third-party contexts
+    resp.headers.add('Set-Cookie','cookie2=value2; SameSite=None; Secure')
     return resp
 ```

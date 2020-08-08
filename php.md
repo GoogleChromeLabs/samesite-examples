@@ -22,16 +22,20 @@ supports the `SameSite` attribute in its options and will accept `None` as a
 valid value.
 
 ```php
-setcookie('same-site-cookie', 'foo', ['samesite' => 'Lax']);
-setcookie('cross-site-cookie', 'bar', ['samesite' => 'None', 'secure' => true]);
+// Set a same-site cookie for first-party contexts
+setcookie('cookie1', 'value1', ['samesite' => 'Lax']);
+// Set a cross-site cookie for third-party contexts
+setcookie('cookie2', 'value2', ['samesite' => 'None', 'secure' => true]);
 ```
 
 For earlier versions of PHP, you can also set the
 [`header()`](https://www.php.net/manual/en/function.header.php) directly:
 
 ```php
-header('Set-Cookie: same-site-cookie=foo; SameSite=Lax', false);
-header('Set-Cookie: cross-site-cookie=bar; SameSite=None; Secure', false);
+// Set a same-site cookie for first-party contexts
+header('Set-Cookie: cookie1=value1; SameSite=Lax', false);
+// Set a cross-site cookie for third-party contexts
+header('Set-Cookie: cookie2=value2; SameSite=None; Secure', false);
 ```
 
 For Session Cookie , you can set into [`session_set_cookie_params`](https://www.php.net/manual/en/function.session-set-cookie-params.php)  method.

@@ -20,6 +20,8 @@ Calls to `document.cookie` continue to work as they have before. You can provide
 the `SameSite` attribute as part of the assigned string.
 
 ```js
-document.cookie = 'same-site-cookie=foo; SameSite=Lax';
-document.cookie = 'cross-site-cookie=bar; SameSite=None; Secure';
+// Set a same-site cookie for first-party contexts
+document.cookie = 'cookie1=value1; SameSite=Lax';
+// Set a cross-site cookie for third-party contexts
+document.cookie = 'cookie2=value2; SameSite=None; Secure';
 ```
