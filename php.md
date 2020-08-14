@@ -61,3 +61,47 @@ session_set_cookie_params(
 );
 }
 ```
+
+
+If you need to set SameSite=None, it's worth checking for incompatible clients, and setting cookies without the SameSite rule for those:
+
+```php
+function hasWorkingSameSiteNoneCookies()
+{
+    if(!isset($_SERVER['HTTP_USER_AGENT']))
+    {
+        return true;
+    }
+
+    $ua = $_SERVER['HTTP_USER_AGENT'];
+
+    //ios 12 iphones/ipods
+    if(strpos($ua, 'CPU iPhone OS 12') !== false)
+    {
+        return false;
+    }
+
+    //ios 12 ipads
+    if(strpos($ua, 'iPad; CPU OS 12') !== false)
+    {
+        return false;
+    }
+
+    //MacOS 10.14 safari
+    if(
+        strpos($ua, 'Macintosh; Intel Mac OS X 10_14') !== false && strpos($ua, 'Version/') !== false
+        && strpos($ua, 'Safari') !== false
+    )
+    {
+        return false;
+    }
+
+    //chrome 50 - 69 (more versions than necessary, but that does not matter)
+    if(strpos($ua, 'Chrome/5') !== false || strpos($ua, 'Chrome/6') !== false)
+    {
+        return false;
+    }
+
+    return true;
+}
+```
