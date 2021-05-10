@@ -13,7 +13,7 @@ inside the <context> tag add
 ```
 ### To add secure property to cookie
 
-* Open server.xml
+* Open web.xml
 
 ```
 Inside the <session-config> tag add:-
