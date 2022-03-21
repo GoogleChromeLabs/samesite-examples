@@ -27,7 +27,7 @@ To add the `SameSite` and `HttpOnly` Flags to these cookies, simply add the foll
 				<!-- Add Flags to Classic ASP Session Cookies -->
 				<rule name="Add Flags to Classic ASP Session Cookies" patternSyntax="ECMAScript">
 					<match serverVariable="RESPONSE_Set_Cookie" pattern="ASPSESSIONID([A-Z]{8})=([A-Z]{24}); secure; path=/" ignoreCase="true" negate="false" />
-					<action type="Rewrite" value="{R:0}y; SameSite=None; HttpOnl" />
+					<action type="Rewrite" value="{R:0}; SameSite=None; HttpOnly" />
 				</rule>
 			</outboundRules>
 		</rewrite>
