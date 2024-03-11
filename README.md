@@ -16,6 +16,16 @@
 
 # 🍪 `SameSite` examples
 
+---
+
+## 💡 Upcoming deprecation of third-party cookies
+
+Now that support for `SameSite=None` has been deployed across the web, the next step is restricting third-party cookies by default. If you added `SameSite=None` to any of your cookies, then you will now need to take further action to migrate or maintain that functionality.
+
+**See the [Third-party cookie deprecation section in the Privacy Sandbox developer documentation](https://developers.google.com/privacy-sandbox/3pcd).**
+
+---
+
 This is a companion repo for the
 ["`SameSite` cookies explained"](https://web.dev/samesite-cookies-explained)
 article on web.dev. This is your starting point for how cookies work, the
