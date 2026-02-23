@@ -73,7 +73,7 @@ As you add the correct `SameSite` and `Secure` values to your cookies, you will
 be able to use the console warnings to test for any you have missed. Try this
 without the previous flags enabled.
 
-# 📋 Examples
+# ⚙️ Examples
 
 In this repo you'll find examples on making use of `SameSite=None; Secure` in a
 variety of languages, libraries, and frameworks. The `SameSite` attribute is
@@ -96,6 +96,10 @@ request to include it.
 - [Python](python.md)
 - [Python - Flask](python-flask.md)
 - [Shopify](https://help.shopify.com/en/api/guides/samesite-cookies)🌐↗️
+
+# 📋 Use cases and common scenarios
+
+- [Fixing issues with `SameSite` cookies and 3-D Secure checkout flows](3d-secure.md)
 
 # 🙋 Questions
 
