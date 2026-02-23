@@ -16,22 +16,19 @@
 
 # Elixir - Phoenix example for `SameSite=None; Secure`
 
-Once [the fix to this issue](https://github.com/elixir-plug/plug/pull/861) is
-released, you will be able to use
-`:same_site`
-like this:
+As of version `v1.10.1` there is a specific [`same_site`](https://hexdocs.pm/plug/Plug.Conn.html#put_resp_cookie/4) option available to set explicitly to a string value like this:
 
 ```elixir
 plug Plug.Session,
   store: :cookie,
-  same_site: :none,
+  same_site: "None",
   secure: true,
   #...
 ```
 
-While you're waiting for the release, you can still
+If your application is using an older version, then you can
 [set the header](https://hexdocs.pm/plug/Plug.Conn.html#put_resp_cookie/4)
-explicitly through `:extra` key to pass any string that is appended to the cookie:
+through `:extra` key to pass any string that is appended to the cookie:
 
 ```elixir
 plug Plug.Session,
